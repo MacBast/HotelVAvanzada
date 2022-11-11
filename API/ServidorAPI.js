@@ -1,11 +1,12 @@
 import express from 'express'
 
+import cors from 'cors' //sirve para que dos servidores pueda comunicarse
+
 import {rutasPersonalizadas} from '../Routes/rutas.js'
 
 import {conectarConMongo} from '../Database/conexion.js'
 
 export class ServidorAPI{
-
 
     constructor(){
         this.app = express()
@@ -30,6 +31,7 @@ export class ServidorAPI{
     }
 
     activarBody(){
+        this.app.use(cors())
         this.app.use(express.json())
     }
 
